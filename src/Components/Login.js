@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Header from './Header';
+import { checkValidData } from '../utils/validate';
 
 const Login = () => {
 	const [isSignInForm, setIsSignInForm] = useState(true);
+
+	const email = useRef(null);
+	const password = useRef(null);
+
+	const handleButtonClick = () => {
+		// validate the form data
+		// checkValidData(email, password)
+		// console.log(email.current.value);
+		// console.log(password.current.value);
+
+		const message = checkValidData(email.current.value, password.current.value);
+		console.log(message);
+	};
 
 	const toggleSingInForm = () => {
 		setIsSignInForm(!isSignInForm);
@@ -16,16 +30,32 @@ const Login = () => {
 					alt="background-img"
 				/>
 			</div>
-			<form className=" flex flex-col rounded bg-opacity-75 p-12 bg-black absolute w-1/4 my-36 mx-auto right-0 left-0">
+			<form
+				onSubmit={(e) => e.preventDefault()}
+				className=" flex flex-col rounded bg-opacity-75 p-12 bg-black absolute w-1/4 my-36 mx-auto right-0 left-0"
+			>
 				<h1 className="font-bold text-3xl py-4 text-white">
 					{isSignInForm ? 'Sign In' : 'Sign Up'}
 				</h1>
 				{!isSignInForm && (
 					<input type="text" placeholder="Full Name" className="p-2 m-2" />
 				)}
-				<input type="email" placeholder="Email Adress" className="p-2 m-2" />
-				<input type="password" placeholder="Password" className="p-2 m-2" />
-				<button className="p-4 m-4 text-white bg-red-700 rounded">
+				<input
+					ref={email}
+					type="email"
+					placeholder="Email Adress"
+					className="p-2 m-2"
+				/>
+				<input
+					ref={password}
+					type="password"
+					placeholder="Password"
+					className="p-2 m-2"
+				/>
+				<button
+					className="p-4 m-4 text-white bg-red-700 rounded"
+					onClick={handleButtonClick}
+				>
 					{isSignInForm ? 'Sign In' : 'Sign Up'}
 				</button>
 				<p
