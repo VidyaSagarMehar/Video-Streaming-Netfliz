@@ -9,6 +9,14 @@
 - Form Validation
 - useRef Hook
 - Firebase Setup
+    -  npm install firebase
+    -  npm install -g firebase-tools
+    -  firebase login
+    -  firebase init
+    -  Select - Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
+    -  What do you want to use as your public directory? build
+    -  Configure as a single-page app (rewrite all urls to /index.html)? (y/N) N
+    -  Set up automatic builds and deploys with GitHub? (y/N) N
 - Deploying our app to production
 - Create SignUp User Account
 - Implement Sign In user Api
