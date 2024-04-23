@@ -17,6 +17,9 @@
     -  What do you want to use as your public directory? build
     -  Configure as a single-page app (rewrite all urls to /index.html)? (y/N) N
     -  Set up automatic builds and deploys with GitHub? (y/N) N
+       - To deploy
+         - npm run build
+         - firebase deploy   
 - Deploying our app to production
 - Create SignUp User Account
 - Implement Sign In user Api
