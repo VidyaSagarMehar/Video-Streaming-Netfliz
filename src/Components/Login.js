@@ -32,7 +32,6 @@ const Login = () => {
 				password.current.value,
 			)
 				.then((userCredential) => {
-					// Signed up
 					const user = userCredential.user;
 					console.log(user);
 				})
@@ -50,10 +49,8 @@ const Login = () => {
 				password.current.value,
 			)
 				.then((userCredential) => {
-					// Signed in
 					const user = userCredential.user;
 					console.log(user);
-					// ...
 				})
 				.catch((error) => {
 					const errorCode = error.code;
