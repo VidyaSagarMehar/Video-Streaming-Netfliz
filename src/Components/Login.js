@@ -9,6 +9,7 @@ import {
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { bgImage, defaultProfilePic } from '../utils/constant';
 
 const Login = () => {
 	const [isSignInForm, setIsSignInForm] = useState(true);
@@ -41,7 +42,7 @@ const Login = () => {
 					//once signed up, updating the user profile
 					updateProfile(user, {
 						displayName: name.current.value,
-						photoURL: 'https://avatars.githubusercontent.com/u/92782806?v=4',
+						photoURL: { defaultProfilePic },
 					})
 						.then(() => {
 							// Profile updated!
@@ -93,10 +94,7 @@ const Login = () => {
 		<div>
 			<Header />
 			<div className="absolute">
-				<img
-					src="https://assets.nflxext.com/ffe/siteui/vlv3/c1366fb4-3292-4428-9639-b73f25539794/3417bf9a-0323-4480-84ee-e1cb2ff0966b/IN-en-20240408-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-					alt="background-img"
-				/>
+				<img src={bgImage} alt="background-img" />
 			</div>
 			<form
 				onSubmit={(e) => e.preventDefault()}
