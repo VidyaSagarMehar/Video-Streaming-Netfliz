@@ -42,7 +42,7 @@ const Login = () => {
 					//once signed up, updating the user profile
 					updateProfile(user, {
 						displayName: name.current.value,
-						photoURL: { defaultProfilePic },
+						photoURL: defaultProfilePic,
 					})
 						.then(() => {
 							// Profile updated!

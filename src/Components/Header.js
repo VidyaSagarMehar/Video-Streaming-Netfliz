@@ -44,7 +44,7 @@ const Header = () => {
 			}
 		});
 
-		// unsubscribe while unmounting
+		// unsubscribe while unmounting (provided by firebase)
 		return () => unsubscribe();
 	}, []);
 
