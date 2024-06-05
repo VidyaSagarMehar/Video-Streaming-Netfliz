@@ -55,7 +55,6 @@ const Login = () => {
 									photoURL: photoURL,
 								}),
 							);
-							console.log(user);
 						})
 						.catch((error) => {
 							// An error occurred
@@ -77,7 +76,6 @@ const Login = () => {
 			)
 				.then((userCredential) => {
 					const user = userCredential.user;
-					// console.log(user);
 				})
 				.catch((error) => {
 					const errorCode = error.code;
