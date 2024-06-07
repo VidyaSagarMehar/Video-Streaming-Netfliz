@@ -9,6 +9,7 @@ import { addUser, removeUser } from '../utils/userSlice';
 import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constant';
 import { toggleGptSearchView } from '../utils/gptSlice';
 import lang from '../utils/languageConstant';
+import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
 	const navigate = useNavigate();
@@ -54,13 +55,19 @@ const Header = () => {
 		//toggle GPT search
 		dispatch(toggleGptSearchView());
 	};
+	const handleLanguageChange = (e) => {
+		dispatch(changeLanguage(e.target.value));
+	};
 
 	return (
 		<div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10 w-full flex justify-between">
 			<img className="w-48" src={LOGO} alt="logo" />
 			{user && (
 				<div className="flex p-2">
-					<select className="p-2 bg-gray-700 rounded-lg text-white m-2">
+					<select
+						className="p-2 bg-gray-700 rounded-lg text-white m-2"
+						onChange={handleLanguageChange}
+					>
 						{SUPPORTED_LANGUAGES.map((lang) => (
 							<option key={lang.identifier} value={lang.identifier}>
 								{lang.name}
