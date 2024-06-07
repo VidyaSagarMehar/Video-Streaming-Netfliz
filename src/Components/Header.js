@@ -8,13 +8,13 @@ import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constant';
 import { toggleGptSearchView } from '../utils/gptSlice';
-import lang from '../utils/languageConstant';
 import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
 	const navigate = useNavigate();
 	const user = useSelector((store) => store.user);
 	const dispatch = useDispatch();
+	const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
 	const handleSignOut = () => {
 		signOut(auth)
@@ -64,21 +64,23 @@ const Header = () => {
 			<img className="w-48" src={LOGO} alt="logo" />
 			{user && (
 				<div className="flex p-2">
-					<select
-						className="p-2 bg-gray-700 rounded-lg text-white m-2"
-						onChange={handleLanguageChange}
-					>
-						{SUPPORTED_LANGUAGES.map((lang) => (
-							<option key={lang.identifier} value={lang.identifier}>
-								{lang.name}
-							</option>
-						))}
-					</select>
+					{showGptSearch && (
+						<select
+							className="p-2 bg-gray-700 rounded-lg text-white m-2"
+							onChange={handleLanguageChange}
+						>
+							{SUPPORTED_LANGUAGES.map((lang) => (
+								<option key={lang.identifier} value={lang.identifier}>
+									{lang.name}
+								</option>
+							))}
+						</select>
+					)}
 					<button
 						className="px-8 mx-4 my-2 bg-purple-600 rounded-lg"
 						onClick={handleGptSearchClick}
 					>
-						GPT Search
+						{showGptSearch ? 'Homepage' : 'GPT Searhc'}
 					</button>
 					<img
 						className="w-12 h-12 rounded-full mt-4 p-2"
