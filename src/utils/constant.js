@@ -23,3 +23,5 @@ export const SUPPORTED_LANGUAGES = [
 	{ identifier: 'hin', name: 'hin' },
 	{ identifier: 'spn', name: 'spn' },
 ];
+
+export const OPENAI_KEY = '';
